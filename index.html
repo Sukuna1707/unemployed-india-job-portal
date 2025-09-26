@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unemployed India | Job Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+        }
+        .container {
+            max-width: 1200px;
+        }
+        .job-card {
+            background-color: #ffffff;
+            border-radius: 24px; /* More rounded */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .job-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(240, 150, 140, 0.3), 0 4px 6px -2px rgba(240, 150, 140, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 py-8">
+
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">Your Next Chapter <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-pink-500">Awaits</span></h1>
+            <p class="mt-4 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">A gentle, simple space to connect with careers that feel right for you. No distractions, just opportunities.</p>
+        </header>
+
+        <!-- Search Bar -->
+        <div class="flex justify-center mb-8">
+            <input type="text" id="searchInput" placeholder="Search for jobs, companies, or locations..."
+                   class="w-full max-w-xl px-6 py-3 border-2 border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-300 text-gray-700">
+        </div>
+
+        <!-- Job Listings -->
+        <div id="job-listings" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Job cards will be rendered here by JavaScript -->
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-gray-400 text-sm">
+        <p>This is a community-driven project. Job listings are for demonstration purposes only.</p>
+    </footer>
+
+    <script>
+        // Sample job data. In a real-world app, this would be fetched from a database.
+        const jobs = [
+            {
+                id: 1,
+                title: "Software Engineer",
+                company: "Innovate Solutions",
+                location: "Bangalore",
+                description: "Develop and maintain web applications using modern frameworks.",
+                link: "https://www.google.com"
+            },
+            {
+                id: 2,
+                title: "Data Analyst",
+                company: "DataCorp",
+                location: "Hyderabad",
+                description: "Analyze large datasets to provide business insights.",
+                link: "https://www.datacorp.com/jobs"
+            },
+            {
+                id: 3,
+                title: "Cloud DevOps Engineer",
+                company: "CloudSphere",
+                location: "Pune",
+                description: "Manage and optimize cloud infrastructure on AWS and GCP.",
+                link: "https://www.cloudspheretech.com/jobs"
+            },
+            {
+                id: 4,
+                title: "UI/UX Designer",
+                company: "Creative Studio",
+                location: "Delhi",
+                description: "Design user-friendly interfaces for mobile and web platforms.",
+                link: "https://www.creativestudio.in/careers"
+            },
+            {
+                id: 5,
+                title: "Product Manager",
+                company: "Growth Labs",
+                location: "Mumbai",
+                description: "Drive product strategy and execution for key products.",
+                link: "https://www.growthlabs.com/joinus"
+            },
+            {
+                id: 6,
+                title: "Full Stack Developer",
+                company: "CodeCraft Inc.",
+                location: "Chennai",
+                description: "Develop and maintain both frontend and backend of web applications.",
+                link: "https://www.codecraft.in/careers"
+            }
+        ];
+
+        const jobListingsContainer = document.getElementById('job-listings');
+        const searchInput = document.getElementById('searchInput');
+
+        // Function to render job cards
+        function renderJobs(filteredJobs) {
+            jobListingsContainer.innerHTML = '';
+            if (filteredJobs.length === 0) {
+                jobListingsContainer.innerHTML = '<p class="text-center col-span-full text-gray-400 text-lg">No jobs found matching your search. Try a different keyword!</p>';
+                return;
+            }
+            
+            filteredJobs.forEach(job => {
+                const jobCard = document.createElement('div');
+                jobCard.className = 'job-card p-6 md:p-8 space-y-4';
+                jobCard.innerHTML = `
+                    <h2 class="text-2xl font-bold text-gray-900">${job.title}</h2>
+                    <p class="text-lg font-medium text-gray-700">${job.company}</p>
+                    <p class="text-gray-500">${job.location}</p>
+                    <p class="text-gray-600">${job.description}</p>
+                    <a href="${job.link}" target="_blank" class="block w-full text-center px-4 py-2 mt-4 text-white font-semibold rounded-full bg-rose-400 hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-300 transition-all duration-300">
+                        Start Your Journey
+                    </a>
+                `;
+                jobListingsContainer.appendChild(jobCard);
+            });
+        }
+
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredJobs = jobs.filter(job =>
+                job.title.toLowerCase().includes(searchTerm) ||
+                job.company.toLowerCase().includes(searchTerm) ||
+                job.location.toLowerCase().includes(searchTerm) ||
+                job.description.toLowerCase().includes(searchTerm)
+            );
+            renderJobs(filteredJobs);
+        });
+
+        // Initial render of all jobs
+        renderJobs(jobs);
+
+    </script>
+</body>
+</html>
