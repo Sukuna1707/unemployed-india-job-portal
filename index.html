@@ -1,155 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unemployed India | Job Portal</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7f7f7;
-        }
-        .container {
-            max-width: 1200px;
-        }
-        .job-card {
-            background-color: #ffffff;
-            border-radius: 24px; /* More rounded */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            transition: box-shadow 0.3s ease-in-out;
-        }
-        .job-card:hover {
-            box-shadow: 0 10px 15px -3px rgba(240, 150, 140, 0.3), 0 4px 6px -2px rgba(240, 150, 140, 0.2);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unemployed India | Job Portal</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fdfdfd;
+    }
+    .container {
+      max-width: 1200px;
+    }
+    .job-card {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(255, 192, 203, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .job-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 25px rgba(240, 150, 140, 0.3);
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gradient-to-br from-pink-50 to-orange-50 text-gray-800">
 
-    <!-- Main Container -->
-    <div class="container mx-auto px-4 py-8">
+  <!-- Main Container -->
+  <div class="container mx-auto px-4 py-8">
 
-        <!-- Header -->
-        <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">Your Next Chapter <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-pink-500">Awaits</span></h1>
-            <p class="mt-4 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">A gentle, simple space to connect with careers that feel right for you. No distractions, just opportunities.</p>
-        </header>
+    <!-- Header -->
+    <header class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+        Your Next Chapter <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-pink-500">Awaits</span>
+      </h1>
+      <p class="mt-4 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+        A gentle, simple space to connect with careers that feel right for you. No distractions, just opportunities.
+      </p>
+    </header>
 
-        <!-- Search Bar -->
-        <div class="flex justify-center mb-8">
-            <input type="text" id="searchInput" placeholder="Search for jobs, companies, or locations..."
-                   class="w-full max-w-xl px-6 py-3 border-2 border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-300 text-gray-700">
-        </div>
+    <!-- Search & Filters -->
+    <div class="flex flex-col md:flex-row justify-center items-center gap-4 mb-8">
+      <input type="text" id="searchInput" placeholder="Search for jobs, companies, or locations..."
+        class="w-full md:w-1/2 px-6 py-3 border-2 border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-300 transition text-gray-700">
+      
+      <select id="locationFilter" class="px-4 py-3 rounded-full border-2 border-gray-200 focus:ring-2 focus:ring-pink-300">
+        <option value="">All Locations</option>
+        <option value="Bangalore">Bangalore</option>
+        <option value="Hyderabad">Hyderabad</option>
+        <option value="Pune">Pune</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Chennai">Chennai</option>
+      </select>
 
-        <!-- Job Listings -->
-        <div id="job-listings" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <!-- Job cards will be rendered here by JavaScript -->
-        </div>
-
+      <select id="roleFilter" class="px-4 py-3 rounded-full border-2 border-gray-200 focus:ring-2 focus:ring-pink-300">
+        <option value="">All Roles</option>
+        <option value="Software Engineer">Software Engineer</option>
+        <option value="Data Analyst">Data Analyst</option>
+        <option value="Cloud DevOps Engineer">Cloud DevOps Engineer</option>
+        <option value="UI/UX Designer">UI/UX Designer</option>
+        <option value="Product Manager">Product Manager</option>
+        <option value="Full Stack Developer">Full Stack Developer</option>
+      </select>
     </div>
 
-    <!-- Footer -->
-    <footer class="text-center py-6 text-gray-400 text-sm">
-        <p>This is a community-driven project. Job listings are for demonstration purposes only.</p>
-    </footer>
+    <!-- Job Listings -->
+    <div id="job-listings" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Job cards will be rendered here -->
+    </div>
 
-    <script>
-        // Sample job data. In a real-world app, this would be fetched from a database.
-        const jobs = [
-            {
-                id: 1,
-                title: "Software Engineer",
-                company: "Innovate Solutions",
-                location: "Bangalore",
-                description: "Develop and maintain web applications using modern frameworks.",
-                link: "https://www.google.com"
-            },
-            {
-                id: 2,
-                title: "Data Analyst",
-                company: "DataCorp",
-                location: "Hyderabad",
-                description: "Analyze large datasets to provide business insights.",
-                link: "https://www.datacorp.com/jobs"
-            },
-            {
-                id: 3,
-                title: "Cloud DevOps Engineer",
-                company: "CloudSphere",
-                location: "Pune",
-                description: "Manage and optimize cloud infrastructure on AWS and GCP.",
-                link: "https://www.cloudspheretech.com/jobs"
-            },
-            {
-                id: 4,
-                title: "UI/UX Designer",
-                company: "Creative Studio",
-                location: "Delhi",
-                description: "Design user-friendly interfaces for mobile and web platforms.",
-                link: "https://www.youtube.com"
-            },
-            {
-                id: 5,
-                title: "Product Manager",
-                company: "Growth Labs",
-                location: "Mumbai",
-                description: "Drive product strategy and execution for key products.",
-                link: "https://www.growthlabs.com/joinus"
-            },
-            {
-                id: 6,
-                title: "Full Stack Developer",
-                company: "CodeCraft Inc.",
-                location: "Chennai",
-                description: "Develop and maintain both frontend and backend of web applications.",
-                link: "https://www.codecraft.in/careers"
-            }
-        ];
+  </div>
 
-        const jobListingsContainer = document.getElementById('job-listings');
-        const searchInput = document.getElementById('searchInput');
+  <!-- Footer -->
+  <footer class="text-center py-6 text-gray-400 text-sm">
+    <p>This is a community-driven project. Job listings are for demonstration purposes only.</p>
+  </footer>
 
-        // Function to render job cards
-        function renderJobs(filteredJobs) {
-            jobListingsContainer.innerHTML = '';
-            if (filteredJobs.length === 0) {
-                jobListingsContainer.innerHTML = '<p class="text-center col-span-full text-gray-400 text-lg">No jobs found matching your search. Try a different keyword!</p>';
-                return;
-            }
-            
-            filteredJobs.forEach(job => {
-                const jobCard = document.createElement('div');
-                jobCard.className = 'job-card p-6 md:p-8 space-y-4';
-                jobCard.innerHTML = `
-                    <h2 class="text-2xl font-bold text-gray-900">${job.title}</h2>
-                    <p class="text-lg font-medium text-gray-700">${job.company}</p>
-                    <p class="text-gray-500">${job.location}</p>
-                    <p class="text-gray-600">${job.description}</p>
-                    <a href="${job.link}" target="_blank" class="block w-full text-center px-4 py-2 mt-4 text-white font-semibold rounded-full bg-rose-400 hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-300 transition-all duration-300">
-                        Start Your Journey
-                    </a>
-                `;
-                jobListingsContainer.appendChild(jobCard);
-            });
-        }
+  <script>
+    // Sample job data
+    const jobs = [
+      { id: 1, title: "Software Engineer", company: "Innovate Solutions", location: "Bangalore", description: "Develop and maintain web applications using modern frameworks.", link: "https://www.google.com" },
+      { id: 2, title: "Data Analyst", company: "DataCorp", location: "Hyderabad", description: "Analyze large datasets to provide business insights.", link: "https://www.datacorp.com/jobs" },
+      { id: 3, title: "Cloud DevOps Engineer", company: "CloudSphere", location: "Pune", description: "Manage and optimize cloud infrastructure on AWS and GCP.", link: "https://www.cloudspheretech.com/jobs" },
+      { id: 4, title: "UI/UX Designer", company: "Creative Studio", location: "Delhi", description: "Design user-friendly interfaces for mobile and web platforms.", link: "https://www.youtube.com" },
+      { id: 5, title: "Product Manager", company: "Growth Labs", location: "Mumbai", description: "Drive product strategy and execution for key products.", link: "https://www.growthlabs.com/joinus" },
+      { id: 6, title: "Full Stack Developer", company: "CodeCraft Inc.", location: "Chennai", description: "Develop and maintain both frontend and backend of web applications.", link: "https://www.codecraft.in/careers" }
+    ];
 
-        // Search functionality
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const filteredJobs = jobs.filter(job =>
-                job.title.toLowerCase().includes(searchTerm) ||
-                job.company.toLowerCase().includes(searchTerm) ||
-                job.location.toLowerCase().includes(searchTerm) ||
-                job.description.toLowerCase().includes(searchTerm)
-            );
-            renderJobs(filteredJobs);
-        });
+    const jobListingsContainer = document.getElementById('job-listings');
+    const searchInput = document.getElementById('searchInput');
+    const locationFilter = document.getElementById('locationFilter');
+    const roleFilter = document.getElementById('roleFilter');
 
-        // Initial render of all jobs
-        renderJobs(jobs);
+    // Render Jobs
+    function renderJobs(filteredJobs) {
+      jobListingsContainer.innerHTML = '';
+      if (filteredJobs.length === 0) {
+        jobListingsContainer.innerHTML = `
+          <div class="col-span-full text-center py-12">
+            <h3 class="text-xl font-semibold text-gray-600">No jobs found 🔍</h3>
+            <p class="text-gray-400">Try a different keyword or check back later.</p>
+          </div>`;
+        return;
+      }
 
-    </script>
+      filteredJobs.forEach(job => {
+        const jobCard = document.createElement('div');
+        jobCard.className = 'job-card p-6 md:p-8 space-y-4';
+        jobCard.innerHTML = `
+          <h2 class="text-2xl font-bold text-gray-900">${job.title}</h2>
+          <p class="text-lg font-medium text-gray-700">${job.company}</p>
+          <p class="text-gray-500">${job.location}</p>
+          <p class="text-gray-600">${job.description}</p>
+          <div class="flex justify-between items-center gap-2">
+            <a href="${job.link}" target="_blank"
+              class="flex-1 text-center px-4 py-2 text-white font-semibold rounded-full bg-rose-400 hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-300 transition">
+              Start Your Journey
+            </a>
+            <button onclick="saveJob(${job.id})"
+              class="px-4 py-2 text-sm rounded-full border border-rose-400 text-rose-400 hover:bg-rose-50 transition">
+              Save
+            </button>
+          </div>
+        `;
+        jobListingsContainer.appendChild(jobCard);
+      });
+    }
+
+    // Save Job Function
+    function saveJob(jobId) {
+      let saved = JSON.parse(localStorage.getItem("savedJobs")) || [];
+      if (!saved.includes(jobId)) {
+        saved.push(jobId);
+        localStorage.setItem("savedJobs", JSON.stringify(saved));
+        alert("Job saved!");
+      } else {
+        alert("Already saved!");
+      }
+    }
+
+    // Filter + Search Logic
+    function applyFilters() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const location = locationFilter.value;
+      const role = roleFilter.value;
+
+      const filteredJobs = jobs.filter(job => {
+        const matchesSearch = job.title.toLowerCase().includes(searchTerm) ||
+                              job.company.toLowerCase().includes(searchTerm) ||
+                              job.location.toLowerCase().includes(searchTerm) ||
+                              job.description.toLowerCase().includes(searchTerm);
+        const matchesLocation = location ? job.location === location : true;
+        const matchesRole = role ? job.title === role : true;
+
+        return matchesSearch && matchesLocation && matchesRole;
+      });
+
+      renderJobs(filteredJobs);
+    }
+
+    // Event Listeners
+    searchInput.addEventListener('input', applyFilters);
+    locationFilter.addEventListener('change', applyFilters);
+    roleFilter.addEventListener('change', applyFilters);
+
+    // Initial render
+    renderJobs(jobs);
+  </script>
 </body>
 </html>
