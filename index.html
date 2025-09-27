@@ -1,84 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Campus Jobs – Find Internships & Roles</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Jobs Journal</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: "Comic Sans MS", "Comic Neue", cursive; /* Handwritten vibe */
+      background: #fdfdfd;
+      background-image: linear-gradient(to bottom, transparent 95%, #ddd 95%);
+      background-size: 100% 2.5rem; /* notebook lines */
+    }
+    .job-card {
+      background: #fff;
+      border: 2px solid #000;
+      box-shadow: 4px 4px 0 #000;
+      transition: transform 0.1s;
+    }
+    .job-card:hover {
+      transform: rotate(-1deg) scale(1.02);
+    }
+    header, footer {
+      border-bottom: 2px solid #000;
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-purple-50 text-gray-800">
+<body class="text-gray-900">
 
   <!-- Header -->
-  <header class="bg-white shadow-md">
-    <div class="container mx-auto flex justify-between items-center p-4">
-      <h1 class="text-2xl font-bold text-purple-600">Campus Jobs</h1>
-      <nav class="space-x-6">
-        <a href="#home" class="hover:text-purple-600">Home</a>
-        <a href="#jobs" class="hover:text-purple-600">Jobs</a>
-        <a href="#about" class="hover:text-purple-600">About</a>
-      </nav>
-    </div>
+  <header class="text-center py-6">
+    <h1 class="text-3xl font-bold">📓 Student Jobs Journal</h1>
+    <p class="text-lg mt-2">Simple. Honest. Just jobs for students.</p>
   </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="text-center py-16">
-    <h2 class="text-3xl font-bold text-gray-900 mb-4">
-      Easy Jobs & Internships for Students 🎓
-    </h2>
-    <p class="text-lg text-gray-600 mb-6">
-      A simple place to explore internships, part-time, and fresher jobs.  
-      No confusion. No spam. Just opportunities for you.
-    </p>
-    <a href="#jobs" class="bg-purple-600 text-white px-6 py-3 rounded-lg shadow hover:bg-purple-700">
-      Browse Jobs
-    </a>
-  </section>
-
   <!-- Jobs Section -->
-  <section id="jobs" class="container mx-auto py-12">
-    <h3 class="text-2xl font-bold text-center mb-8 text-purple-700">Latest Openings</h3>
+  <main class="container mx-auto px-4 py-10">
+    <h2 class="text-2xl font-bold mb-6">Latest Openings</h2>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Job Card 1 -->
-      <div class="bg-white rounded-xl shadow-md p-5">
-        <h4 class="text-lg font-semibold">Intern – Web Development</h4>
-        <p class="text-gray-600">Company: Startup Hub</p>
-        <p class="text-sm text-gray-500 mt-2">📍 Remote</p>
-        <a href="#" class="mt-3 inline-block bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Apply</a>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Job Card -->
+      <div class="job-card p-4 rounded-lg">
+        <h3 class="text-xl font-bold">Intern – Web Dev</h3>
+        <p class="mt-1">Company: Startup Hub</p>
+        <p class="text-sm mt-1">📍 Remote</p>
+        <a href="#" class="inline-block mt-3 bg-black text-white px-3 py-1 rounded hover:bg-gray-800">Apply</a>
       </div>
 
-      <!-- Job Card 2 -->
-      <div class="bg-white rounded-xl shadow-md p-5">
-        <h4 class="text-lg font-semibold">Campus Ambassador</h4>
-        <p class="text-gray-600">Company: EduSpark</p>
-        <p class="text-sm text-gray-500 mt-2">📍 Work From Home</p>
-        <a href="#" class="mt-3 inline-block bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Apply</a>
+      <div class="job-card p-4 rounded-lg">
+        <h3 class="text-xl font-bold">Campus Ambassador</h3>
+        <p class="mt-1">Company: EduSpark</p>
+        <p class="text-sm mt-1">📍 Work From Home</p>
+        <a href="#" class="inline-block mt-3 bg-black text-white px-3 py-1 rounded hover:bg-gray-800">Apply</a>
       </div>
 
-      <!-- Job Card 3 -->
-      <div class="bg-white rounded-xl shadow-md p-5">
-        <h4 class="text-lg font-semibold">Junior Data Analyst</h4>
-        <p class="text-gray-600">Company: DataWorks</p>
-        <p class="text-sm text-gray-500 mt-2">📍 Pune, India</p>
-        <a href="#" class="mt-3 inline-block bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Apply</a>
+      <div class="job-card p-4 rounded-lg">
+        <h3 class="text-xl font-bold">Junior Data Analyst</h3>
+        <p class="mt-1">Company: DataWorks</p>
+        <p class="text-sm mt-1">📍 Pune</p>
+        <a href="#" class="inline-block mt-3 bg-black text-white px-3 py-1 rounded hover:bg-gray-800">Apply</a>
       </div>
     </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="bg-purple-50 py-12">
-    <div class="container mx-auto text-center">
-      <h3 class="text-2xl font-bold text-purple-700 mb-4">About This Site</h3>
-      <p class="text-gray-600 max-w-xl mx-auto">
-        We made this simple portal for students who just want to quickly find internships and jobs.  
-        It’s clean, friendly, and made to save your time ✨
-      </p>
-    </div>
-  </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="bg-white shadow-inner py-6 mt-10 text-center text-gray-600">
-    © 2025 Campus Jobs · Built with ❤️ for students
+  <footer class="text-center py-6 border-t-2 border-black mt-10">
+    <p>✏️ Built like a student diary · © 2025</p>
   </footer>
 
 </body>
