@@ -1,72 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Jobs Journal</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      font-family: "Comic Sans MS", "Comic Neue", cursive; /* Handwritten vibe */
-      background: #fdfdfd;
-      background-image: linear-gradient(to bottom, transparent 95%, #ddd 95%);
-      background-size: 100% 2.5rem; /* notebook lines */
-    }
-    .job-card {
-      background: #fff;
-      border: 2px solid #000;
-      box-shadow: 4px 4px 0 #000;
-      transition: transform 0.1s;
-    }
-    .job-card:hover {
-      transform: rotate(-1deg) scale(1.02);
-    }
-    header, footer {
-      border-bottom: 2px solid #000;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Opportunity Journal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font stack to maintain the playful, diary feel */
+        @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+        body {
+            font-family: 'Patrick Hand', "Comic Sans MS", cursive; 
+            background: #fdfdfd;
+            /* Simple notebook lines effect */
+            background-image: linear-gradient(to bottom, transparent 97%, #ddd 97%);
+            background-size: 100% 2.5rem; 
+            min-height: 100vh;
+        }
+        h1, h2 {
+            font-family: 'Patrick Hand', cursive;
+        }
+        .job-card {
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 8px;
+            box-shadow: 4px 4px 0 #000;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+        .job-card:hover {
+            transform: translateY(-2px) translateX(-2px);
+            box-shadow: 6px 6px 0 #F87171; /* Soft red/pink shadow on hover */
+        }
+        .job-button {
+            background-color: #000;
+            color: #fff;
+            transition: background-color 0.1s;
+            border-radius: 6px;
+        }
+        .job-button:hover {
+            background-color: #F87171; /* Match hover shadow color */
+        }
+        header {
+            border-bottom: 3px dashed #000; /* Dashed line for notebook feel */
+        }
+        .search-input {
+            border: 2px solid #000;
+            border-radius: 8px;
+            box-shadow: 2px 2px 0 #000;
+        }
+    </style>
 </head>
 <body class="text-gray-900">
 
-  <!-- Header -->
-  <header class="text-center py-6">
-    <h1 class="text-3xl font-bold">📓 Student Jobs Journal</h1>
-    <p class="text-lg mt-2">Simple. Honest. Just jobs for students.</p>
-  </header>
+    <!-- Header -->
+    <header class="text-center py-8 bg-white/70 backdrop-blur-sm sticky top-0 z-10">
+        <h1 class="text-4xl font-bold">🗒️ The Opportunity Journal</h1>
+        <p class="text-xl mt-2">A clear path to your next role. No distractions, just honest listings.</p>
+    </header>
 
-  <!-- Jobs Section -->
-  <main class="container mx-auto px-4 py-10">
-    <h2 class="text-2xl font-bold mb-6">Latest Openings</h2>
+    <!-- Jobs Section -->
+    <main class="container mx-auto px-4 py-10">
+        <h2 class="text-3xl font-bold mb-8 text-center">Latest Opportunities</h2>
 
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <!-- Job Card -->
-      <div class="job-card p-4 rounded-lg">
-        <h3 class="text-xl font-bold">Intern – Web Dev</h3>
-        <p class="mt-1">Company: Startup Hub</p>
-        <p class="text-sm mt-1">📍 Remote</p>
-        <a href="#" class="inline-block mt-3 bg-black text-white px-3 py-1 rounded hover:bg-gray-800">Apply</a>
-      </div>
+        <!-- Search Bar -->
+        <div class="flex justify-center mb-10">
+            <input type="text" id="searchInput" placeholder="Scribble down your desired job, company, or location..."
+                   class="search-input w-full max-w-xl px-6 py-3 focus:outline-none focus:ring-0">
+        </div>
 
-      <div class="job-card p-4 rounded-lg">
-        <h3 class="text-xl font-bold">Campus Ambassador</h3>
-        <p class="mt-1">Company: EduSpark</p>
-        <p class="text-sm mt-1">📍 Work From Home</p>
-        <a href="#" class="inline-block mt-3 bg-black text-white px-3 py-1 rounded hover:bg-gray-800">Apply</a>
-      </div>
+        <!-- Job Listings - Dynamically rendered here -->
+        <div id="job-listings" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Job cards will be rendered here by JavaScript -->
+        </div>
+    </main>
 
-      <div class="job-card p-4 rounded-lg">
-        <h3 class="text-xl font-bold">Junior Data Analyst</h3>
-        <p class="mt-1">Company: DataWorks</p>
-        <p class="text-sm mt-1">📍 Pune</p>
-        <a href="#" class="inline-block mt-3 bg-black text-white px-3 py-1 rounded hover:bg-gray-800">Apply</a>
-      </div>
-    </div>
-  </main>
+    <!-- Footer -->
+    <footer class="text-center py-6 border-t-2 border-black mt-10">
+        <p>✏️ Curated for Growth · © 2025</p>
+    </footer>
 
-  <!-- Footer -->
-  <footer class="text-center py-6 border-t-2 border-black mt-10">
-    <p>✏️ Built like a student diary · © 2025</p>
-  </footer>
+    <script>
+        // === CORE JOB DATA (Now expanded for all experience levels) ===
+        const jobs = [
+            {
+                id: 1,
+                title: "Senior DevOps Engineer",
+                company: "CloudSphere Tech",
+                location: "Bangalore (Hybrid)",
+                description: "Lead infrastructure automation and CI/CD pipelines using Kubernetes and Terraform. Min 5 years experience required.",
+                link: "https://www.cloudsphere.com/careers"
+            },
+            {
+                id: 2,
+                title: "Marketing Manager - Digital",
+                company: "GrowthLabs India",
+                location: "Mumbai",
+                description: "Manage and optimize digital marketing campaigns across all platforms. Must have 3+ years experience with Google Ads and SEO.",
+                link: "https://www.growthlabs.in/apply"
+            },
+            {
+                id: 3,
+                title: "Entry-Level Data Analyst",
+                company: "DataWorks Consulting",
+                location: "Pune",
+                description: "Clean, analyze, and visualize data for internal projects. Python/R proficiency preferred. Open to fresh graduates.",
+                link: "https://www.dataworks.co/join"
+            },
+            {
+                id: 4,
+                title: "Full Stack Developer (3 yrs exp.)",
+                company: "CodeCraft Inc.",
+                location: "Remote",
+                description: "Work on both frontend (React) and backend (Node.js) development. Independent work environment.",
+                link: "https://www.codecraft.in/developers"
+            },
+            {
+                id: 5,
+                title: "Executive Assistant to CEO",
+                company: "QuickFix Solutions",
+                location: "Hyderabad",
+                description: "Manage scheduling, communications, and travel logistics for the CEO. Requires excellent organizational skills.",
+                link: "https://www.quickfix.com/support-roles"
+            }
+        ];
 
+        const jobListingsContainer = document.getElementById('job-listings');
+        const searchInput = document.getElementById('searchInput');
+
+        // Function to render job cards dynamically
+        function renderJobs(filteredJobs) {
+            jobListingsContainer.innerHTML = '';
+            if (filteredJobs.length === 0) {
+                jobListingsContainer.innerHTML = '<p class="text-center col-span-full text-xl text-gray-500 mt-10">🤷‍♂️ Oops! Nothing matched your scribble. Try searching for a wider range of keywords!</p>';
+                return;
+            }
+            
+            filteredJobs.forEach(job => {
+                const jobCard = document.createElement('div');
+                jobCard.className = 'job-card p-6 space-y-3';
+                jobCard.innerHTML = `
+                    <h3 class="text-2xl font-bold">${job.title}</h3>
+                    <p class="text-lg mt-1">${job.company}</p>
+                    <p class="text-sm mt-1 flex items-center">
+                        <span class="mr-2">📍</span> ${job.location}
+                    </p>
+                    <p class="text-gray-600 text-base mt-2">${job.description}</p>
+                    <a href="${job.link}" target="_blank" class="job-button inline-block px-4 py-2 mt-4 font-semibold rounded-lg text-center">
+                        Jump to Application →
+                    </a>
+                `;
+                jobListingsContainer.appendChild(jobCard);
+            });
+        }
+
+        // Search functionality listener
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredJobs = jobs.filter(job =>
+                job.title.toLowerCase().includes(searchTerm) ||
+                job.company.toLowerCase().includes(searchTerm) ||
+                job.location.toLowerCase().includes(searchTerm) ||
+                job.description.toLowerCase().includes(searchTerm)
+            );
+            renderJobs(filteredJobs);
+        });
+
+        // Initial render of all jobs when the page loads
+        renderJobs(jobs);
+
+    </script>
 </body>
 </html>
