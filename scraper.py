@@ -1,106 +1,98 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+import time 
 
-# --- 1. SET YOUR TARGET: ***CRITICAL STEP*** ---
-# 1. Replace the URL below with the *actual* search results page URL from a website (e.g., Indeed, Naukri, or a specific company's career page).
-# 2. Always check the target website's robots.txt file for scraping permissions (add /robots.txt to the root domain).
-TARGET_URL = 'https://studentscircles.com/jobs/'  # TARGET URL: Wellfound Jobs
+# --- 1. SET YOUR TARGET: ***CRITICAL STEP: CHANGE THIS!*** ---
+# We are replacing the generic placeholder with a specific search URL.
+# Note: Naukri is very aggressive against scrapers. If this fails, use a large MNC career page.
+TARGET_URL = 'https://www.naukri.com/fresher-jobs-in-india?src=nav&lang=en' # Targeting the Fresher Jobs page on Naukri
+
+# --- 2. DEFINE SELECTORS: ***CRITICAL STEP: UPDATED FOR NAUKRI-LIKE STRUCTURES!*** ---
+# This selector finds the main box/container for a single job listing.
+# Note: This is an educated guess based on common card structures.
+JOB_CARD_SELECTOR = 'div.srp-jobtuple-wrapper' 
+
+# These selectors find the individual data points *inside* the JOB_CARD_SELECTOR.
+TITLE_SELECTOR = 'a.title'
+COMPANY_SELECTOR = 'a.comp-name'
+LINK_SELECTOR = 'a.title' # The title link is the application link
 # --- --------------------------------------- ---
 
 def run_scraper():
-    """Fetches job listings, extracts data, and saves it to a JSON file."""
-    print(f"Starting job scraper for: {TARGET_URL}")
+    """Fetches web data and attempts to extract job-like structures."""
+    print(f"Starting connection test for: {TARGET_URL}")
+    print(f"Goal: Scraping Freshers Jobs in India.")
     
-    scraped_jobs = []
+    scraped_items = []
 
     try:
-        # Send a request to fetch the HTML content
-        # Use a user-agent to pretend you are a regular browser
+        # User-Agent to mimic a regular browser
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
         }
-        # Adding a small, polite delay between requests to avoid overwhelming the server
-        response = requests.get(TARGET_URL, headers=headers, timeout=15)
-        response.raise_for_status() # Raise an error for bad status codes (4xx or 5xx)
+        
+        # Add a polite delay to avoid overwhelming the server
+        time.sleep(3) # Increased delay for a major site like Naukri
+        
+        # 1. Fetch the page content
+        response = requests.get(TARGET_URL, headers=headers, timeout=20)
+        response.raise_for_status() # Check for request errors
 
-        # Parse the HTML content
+        # 2. Parse the content
         soup = BeautifulSoup(response.content, 'html.parser')
 
-        # --- 2. FIND JOB CARDS (THIS SELECTOR MUST BE CUSTOMIZED!) ---
-        # NOTE: Wellfound uses a highly dynamic website structure (JavaScript/React). 
-        # A simple 'requests.get' may only fetch the framework, not the jobs themselves.
-        # You will likely need to use Selenium/Playwright (more complex tools) for full success.
-        # We will try a common container class here, but be prepared to check the output!
-        JOB_CARD_SELECTOR = 'div[data-test="JobCard"]' # Targeting a plausible data attribute for modern sites
-        job_listings = soup.select(JOB_CARD_SELECTOR) 
+        # 3. Find all the main items 
+        all_items = soup.select(JOB_CARD_SELECTOR) 
 
-        if not job_listings:
-            print(f"Error: Could not find any job listings using the selector '{JOB_CARD_SELECTOR}'.")
-            print("Action Needed: If the job list is empty, Wellfound is likely loading jobs with JavaScript.")
-            print("You must inspect the page source to find the correct selector, or switch to a tool that handles JavaScript rendering.")
+        if not all_items:
+            print(f"Error: Found 0 items using the selector '{JOB_CARD_SELECTOR}'. This usually means the selector is wrong or the content is dynamic (JavaScript loaded).")
+            print("Action needed: If this fails, you MUST target a simpler website, or manually inspect Naukri for a new selector.")
             return []
 
-        # --- 3. EXTRACT DETAILS FROM EACH CARD ---
-        for index, job_card in enumerate(job_listings):
-            if index >= 50: # Limit to 50 jobs for simplicity
-                break
-            
-            # --- CUSTOMIZE THESE SELECTORS FOR YOUR TARGET WEBSITE ---
+        # 4. Loop through found items and extract data
+        for index, item in enumerate(all_items):
             try:
-                # Find the primary link/title
-                title_tag = job_card.find('a', class_='styles_title_') # Example class targeting the job title link
+                # --- EXTRACTING DATA ---
+                title = item.select_one(TITLE_SELECTOR).text.strip()
+                company = item.select_one(COMPANY_SELECTOR).text.strip()
                 
-                if not title_tag: continue # Skip if title not found
+                # Extract the URL/Link
+                link_tag = item.select_one(LINK_SELECTOR)
+                link = link_tag['href'] if link_tag and link_tag.has_attr('href') else '#'
                 
-                title = title_tag.text.strip()
-                
-                # IMPORTANT: Wellfound links are relative. We need the full link.
-                link = "https://studentscircles.com/jobs/" + title_tag['href'] if title_tag.get('href') else "#"
-                
-                # Extract Company Name (Often linked)
-                company_tag = job_card.find('a', class_='styles_companyName') # Example class targeting company name
-                company = company_tag.text.strip() if company_tag else "N/A"
-                
-                # Extract Location (Often a tag below the company)
-                location_tag = job_card.find('div', class_='styles_location')
-                location = location_tag.text.strip() if location_tag else 'N/A'
-
-                # Extract Description Snippet (Simplifying to a placeholder as snippets are often tricky)
-                description = f"Job listing summary for {title} at {company}. Check link for details."
-                
-                scraped_jobs.append({
+                # Clean up and append the data
+                scraped_items.append({
                     "id": index + 1,
-                    "title": title,
+                    "title": title.strip('"'),
                     "company": company,
-                    "location": location,
-                    "description": description,
-                    "link": link
+                    "location": "India - Fresher", 
+                    "description": f"Scraped from Naukri (Fresher). Apply before 30 days.",
+                    "link": link # Use the direct link
                 })
 
-            except AttributeError as e:
-                # This happens if one of the find() calls returns None, meaning the data structure changed.
-                print(f"Skipping job card {index + 1} due to HTML structure issue: {e}")
+            except AttributeError:
+                # Skip items if structure is unexpectedly missing a piece
                 continue
+            
+        print(f"Scraping completed. Found {len(scraped_items)} items.")
+        return scraped_items
 
     except requests.exceptions.RequestException as e:
-        print(f"Failed to fetch {TARGET_URL}: {e}")
+        print(f"Failed to connect to {TARGET_URL}: {e}")
         return []
 
-    print(f"Scraping completed. Found {len(scraped_jobs)} jobs.")
-    return scraped_jobs
-
-# --- 4. EXPORT AND FINALIZE ---
+# --- 5. EXPORT AND FINALIZE ---
 if __name__ == "__main__":
     real_job_data = run_scraper()
     
-    # Save the data to a JSON file (the format your index.html needs)
+    # Save the data to a JSON file
     with open('real_jobs.json', 'w', encoding='utf-8') as f:
         json.dump(real_job_data, f, ensure_ascii=False, indent=4)
         
     print("\nData saved to real_jobs.json. Ready for copy-paste.")
     
-    # Optional: Print the JSON content to the console for easy copy-paste
+    # Print the JSON content to the console for easy copy-paste
     print("\n\n--- COPY THIS SECTION INTO index.html ---")
     print(json.dumps(real_job_data, ensure_ascii=False, indent=4))
     print("----------------------------------------\n")
