@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Opportunity Journal</title>
+    <title>Karriere India | The Opportunity Journal</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -54,7 +54,7 @@
 
     <!-- Header -->
     <header class="text-center py-8 bg-white/70 backdrop-blur-sm sticky top-0 z-10">
-        <h1 class="text-4xl font-bold">🗒️ The Opportunity Journal</h1>
+        <h1 class="text-4xl font-bold">🗒️ Karriere India | The Opportunity Journal</h1>
         <p class="text-xl mt-2">A clear path to your next role. No distractions, just honest listings.</p>
     </header>
 
@@ -76,11 +76,12 @@
 
     <!-- Footer -->
     <footer class="text-center py-6 border-t-2 border-black mt-10">
-        <p>✏️ Curated for Growth · © 2025</p>
+        <p>✏️ Curated for Growth · © 2025 Karriere India</p>
     </footer>
 
     <script>
-        // === CORE JOB DATA (Now expanded for all experience levels) ===
+        // === CORE JOB DATA (THIS IS WHERE YOU PASTE THE REAL DATA) ===
+        // NOTE: REPLACE THIS ENTIRE ARRAY with your real job data from the scraper!
         const jobs = [
             {
                 id: 1,
@@ -88,7 +89,7 @@
                 company: "CloudSphere Tech",
                 location: "Bangalore (Hybrid)",
                 description: "Lead infrastructure automation and CI/CD pipelines using Kubernetes and Terraform. Min 5 years experience required.",
-                link: "https://www.cloudsphere.com/careers"
+                link: "https://www.cloudsphere.com/careers" // MUST REPLACE WITH REAL URL
             },
             {
                 id: 2,
@@ -96,7 +97,7 @@
                 company: "GrowthLabs India",
                 location: "Mumbai",
                 description: "Manage and optimize digital marketing campaigns across all platforms. Must have 3+ years experience with Google Ads and SEO.",
-                link: "https://www.growthlabs.in/apply"
+                link: "https://www.growthlabs.in/apply" // MUST REPLACE WITH REAL URL
             },
             {
                 id: 3,
@@ -104,7 +105,7 @@
                 company: "DataWorks Consulting",
                 location: "Pune",
                 description: "Clean, analyze, and visualize data for internal projects. Python/R proficiency preferred. Open to fresh graduates.",
-                link: "https://www.dataworks.co/join"
+                link: "https://www.dataworks.co/join" // MUST REPLACE WITH REAL URL
             },
             {
                 id: 4,
@@ -112,7 +113,7 @@
                 company: "CodeCraft Inc.",
                 location: "Remote",
                 description: "Work on both frontend (React) and backend (Node.js) development. Independent work environment.",
-                link: "https://www.codecraft.in/developers"
+                link: "https://www.codecraft.in/developers" // MUST REPLACE WITH REAL URL
             },
             {
                 id: 5,
@@ -120,7 +121,15 @@
                 company: "QuickFix Solutions",
                 location: "Hyderabad",
                 description: "Manage scheduling, communications, and travel logistics for the CEO. Requires excellent organizational skills.",
-                link: "https://www.quickfix.com/support-roles"
+                link: "https://www.quickfix.com/support-roles" // MUST REPLACE WITH REAL URL
+            },
+            {
+                id: 6,
+                title: "HR Talent Acquisition Intern",
+                company: "PeopleFirst",
+                location: "Delhi NCR",
+                description: "Assist in screening, scheduling, and onboarding new employees. Great resume building opportunity.",
+                link: "#" // MUST REPLACE WITH REAL URL
             }
         ];
 
@@ -138,14 +147,19 @@
             filteredJobs.forEach(job => {
                 const jobCard = document.createElement('div');
                 jobCard.className = 'job-card p-6 space-y-3';
+
+                // Ensure the description is not too long
+                const descriptionSnippet = job.description.length > 100 ? job.description.substring(0, 100) + '...' : job.description;
+
+
                 jobCard.innerHTML = `
                     <h3 class="text-2xl font-bold">${job.title}</h3>
                     <p class="text-lg mt-1">${job.company}</p>
                     <p class="text-sm mt-1 flex items-center">
                         <span class="mr-2">📍</span> ${job.location}
                     </p>
-                    <p class="text-gray-600 text-base mt-2">${job.description}</p>
-                    <a href="${job.link}" target="_blank" class="job-button inline-block px-4 py-2 mt-4 font-semibold rounded-lg text-center">
+                    <p class="text-gray-600 text-base mt-2">${descriptionSnippet}</p>
+                    <a href="${job.link}" target="_blank" class="job-button inline-block px-4 py-2 mt-4 font-semibold text-center">
                         Jump to Application →
                     </a>
                 `;
