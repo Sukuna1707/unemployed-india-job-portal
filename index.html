@@ -81,7 +81,7 @@
 
     <script>
         // === CORE JOB DATA: REAL LISTINGS ===
-        // This array now contains the real data you provided, formatted for display.
+        // NOTE: ADDED 'postedDate' FIELD. Format is YYYY-MM-DD.
         const jobs = [
             {
                 id: 1,
@@ -89,7 +89,8 @@
                 company: "United Airlines Inc.",
                 location: "Gurugram, Haryana, India",
                 description: "Driving data-driven insights for commercial/operational projects. Requires 2+ years experience in Java/Python, Big Data (PySpark, Kafka, Airflow), and RDBMS/Data Warehouse.",
-                link: "https://careers.united.com/us/en/job/GGN00002195/Data-Engineer"
+                link: "https://careers.united.com/us/en/job/GGN00002195/Data-Engineer",
+                postedDate: "2025-09-28" // Posted Today
             },
             {
                 id: 2,
@@ -97,7 +98,8 @@
                 company: "GE Vernova",
                 location: "Hyderabad, Telangana, India",
                 description: "Innovative Lead UI Developer responsible for programming components, features, and feature sets. Works independently, leads design discussions, and guides the team on component design.",
-                link: "https://careers.gevernova.com/global/en/job/GVXGVWGLOBALR5003932EXTERNALENGLOBAL/Staff-Software-Engineer"
+                link: "https://careers.gevernova.com/global/en/job/GVXGVWGLOBALR5003932EXTERNALENGLOBAL/Staff-Software-Engineer",
+                postedDate: "2025-09-28" // Posted Today
             },
             {
                 id: 3,
@@ -105,16 +107,61 @@
                 company: "Hexagon",
                 location: "Hyderabad / Hybrid",
                 description: "Off Campus Drive for fresh talent. Focus on Cloud Operations and engineering best practices. Experience requirement is 0 – 1 Years.",
-                link: "https://careers.hexagon.com/job/Principal-Cloud-Ops-Engineer/1700-en_US/"
+                link: "https://careers.hexagon.com/job/Principal-Cloud-Ops-Engineer/1700-en_US/",
+                postedDate: "2025-09-28" // Posted Today
+            },
+            // === EXAMPLE OF AN EXPIRED JOB (Will be hidden immediately) ===
+            {
+                id: 4,
+                title: "Expired Data Entry Position",
+                company: "Old Listings Co.",
+                location: "Delhi",
+                description: "This job is over 30 days old and will be hidden from view.",
+                link: "#",
+                postedDate: "2025-08-01" // Posted August 1st - Should be hidden
             }
         ];
 
         const jobListingsContainer = document.getElementById('job-listings');
         const searchInput = document.getElementById('searchInput');
 
+        // --- NEW: EXPIRATION LOGIC ---
+        const EXPIRATION_DAYS = 30;
+        const MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+        /**
+         * Checks if a job listing has expired based on a 30-day limit.
+         * @param {string} dateString - The job's postedDate string (YYYY-MM-DD).
+         * @returns {boolean} True if the job is expired, false otherwise.
+         */
+        function isJobExpired(dateString) {
+            const posted = new Date(dateString);
+            const now = new Date();
+            // Calculate the difference in days
+            const timeDifference = now.getTime() - posted.getTime();
+            const dayDifference = timeDifference / MS_PER_DAY;
+            
+            return dayDifference > EXPIRATION_DAYS;
+        }
+        // --- END EXPIRATION LOGIC ---
+
+
         // Function to render job cards dynamically
-        function renderJobs(filteredJobs) {
+        function renderJobs(inputJobs) {
             jobListingsContainer.innerHTML = '';
+            
+            // 1. Filter out expired jobs FIRST
+            const currentJobs = inputJobs.filter(job => !isJobExpired(job.postedDate));
+
+            // 2. Apply search filter to the current jobs
+            const searchTerm = searchInput.value.toLowerCase();
+            const filteredJobs = currentJobs.filter(job =>
+                job.title.toLowerCase().includes(searchTerm) ||
+                job.company.toLowerCase().includes(searchTerm) ||
+                job.location.toLowerCase().includes(searchTerm) ||
+                job.description.toLowerCase().includes(searchTerm)
+            );
+
             if (filteredJobs.length === 0) {
                 jobListingsContainer.innerHTML = '<p class="text-center col-span-full text-xl text-gray-500 mt-10">🤷‍♂️ Oops! Nothing matched your scribble. Try searching for a wider range of keywords!</p>';
                 return;
@@ -127,12 +174,16 @@
                 // Ensure the description is not too long
                 const descriptionSnippet = job.description.length > 100 ? job.description.substring(0, 100) + '...' : job.description;
 
+                // Simple display of when the job was posted
+                const postedDateDisplay = new Date(job.postedDate).toLocaleDateString('en-IN', { month: 'short', day: 'numeric' });
+
 
                 jobCard.innerHTML = `
                     <h3 class="text-2xl font-bold">${job.title}</h3>
                     <p class="text-lg mt-1">${job.company}</p>
-                    <p class="text-sm mt-1 flex items-center">
-                        <span class="mr-2">📍</span> ${job.location}
+                    <p class="text-sm mt-1 flex items-center justify-between">
+                        <span class="flex items-center"><span class="mr-2">📍</span> ${job.location}</span>
+                        <span class="text-xs font-bold bg-gray-200 px-2 py-1 rounded-full border border-gray-300">📅 Posted: ${postedDateDisplay}</span>
                     </p>
                     <p class="text-gray-600 text-base mt-2">${descriptionSnippet}</p>
                     <a href="${job.link}" target="_blank" class="job-button inline-block px-4 py-2 mt-4 font-semibold text-center">
@@ -144,15 +195,9 @@
         }
 
         // Search functionality listener
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const filteredJobs = jobs.filter(job =>
-                job.title.toLowerCase().includes(searchTerm) ||
-                job.company.toLowerCase().includes(searchTerm) ||
-                job.location.toLowerCase().includes(searchTerm) ||
-                job.description.toLowerCase().includes(searchTerm)
-            );
-            renderJobs(filteredJobs);
+        searchInput.addEventListener('input', () => {
+            // Rerun the full rendering logic (which applies both filters)
+            renderJobs(jobs); 
         });
 
         // Initial render of all jobs when the page loads
