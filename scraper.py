@@ -1,98 +1,172 @@
 import requests
-from bs4 import BeautifulSoup
 import json
-import time 
+from datetime import datetime
 
-# --- 1. SET YOUR TARGET: ***CRITICAL STEP: CHANGE THIS!*** ---
-# We are replacing the generic placeholder with a specific search URL.
-# Note: Naukri is very aggressive against scrapers. If this fails, use a large MNC career page.
-TARGET_URL = 'https://www.naukri.com/fresher-jobs-in-india?src=nav&lang=en' # Targeting the Fresher Jobs page on Naukri
+# --- CONFIGURATION ---
+# The script now uses API endpoints to reliably fetch data from multiple sources.
+# This approach is fast, reliable, and avoids anti-scraping walls.
+# We are currently targeting India-based jobs from major platforms.
+ALL_JOBS = []
 
-# --- 2. DEFINE SELECTORS: ***CRITICAL STEP: UPDATED FOR NAUKRI-LIKE STRUCTURES!*** ---
-# This selector finds the main box/container for a single job listing.
-# Note: This is an educated guess based on common card structures.
-JOB_CARD_SELECTOR = 'div.srp-jobtuple-wrapper' 
+# --- 1. DATA SOURCE FUNCTIONS ---
 
-# These selectors find the individual data points *inside* the JOB_CARD_SELECTOR.
-TITLE_SELECTOR = 'a.title'
-COMPANY_SELECTOR = 'a.comp-name'
-LINK_SELECTOR = 'a.title' # The title link is the application link
-# --- --------------------------------------- ---
-
-def run_scraper():
-    """Fetches web data and attempts to extract job-like structures."""
-    print(f"Starting connection test for: {TARGET_URL}")
-    print(f"Goal: Scraping Freshers Jobs in India.")
-    
-    scraped_items = []
-
+# === GOOGLE CAREERS ===
+def fetch_google_jobs():
+    """Fetches jobs directly from the Google Careers API for India."""
     try:
-        # User-Agent to mimic a regular browser
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-        }
+        url = "https://careers.google.com/api/v3/search/?location=India"
+        r = requests.get(url, timeout=10)
+        r.raise_for_status()
+        data = r.json()
         
-        # Add a polite delay to avoid overwhelming the server
-        time.sleep(3) # Increased delay for a major site like Naukri
-        
-        # 1. Fetch the page content
-        response = requests.get(TARGET_URL, headers=headers, timeout=20)
-        response.raise_for_status() # Check for request errors
-
-        # 2. Parse the content
-        soup = BeautifulSoup(response.content, 'html.parser')
-
-        # 3. Find all the main items 
-        all_items = soup.select(JOB_CARD_SELECTOR) 
-
-        if not all_items:
-            print(f"Error: Found 0 items using the selector '{JOB_CARD_SELECTOR}'. This usually means the selector is wrong or the content is dynamic (JavaScript loaded).")
-            print("Action needed: If this fails, you MUST target a simpler website, or manually inspect Naukri for a new selector.")
-            return []
-
-        # 4. Loop through found items and extract data
-        for index, item in enumerate(all_items):
-            try:
-                # --- EXTRACTING DATA ---
-                title = item.select_one(TITLE_SELECTOR).text.strip()
-                company = item.select_one(COMPANY_SELECTOR).text.strip()
-                
-                # Extract the URL/Link
-                link_tag = item.select_one(LINK_SELECTOR)
-                link = link_tag['href'] if link_tag and link_tag.has_attr('href') else '#'
-                
-                # Clean up and append the data
-                scraped_items.append({
-                    "id": index + 1,
-                    "title": title.strip('"'),
-                    "company": company,
-                    "location": "India - Fresher", 
-                    "description": f"Scraped from Naukri (Fresher). Apply before 30 days.",
-                    "link": link # Use the direct link
-                })
-
-            except AttributeError:
-                # Skip items if structure is unexpectedly missing a piece
-                continue
-            
-        print(f"Scraping completed. Found {len(scraped_items)} items.")
-        return scraped_items
-
-    except requests.exceptions.RequestException as e:
-        print(f"Failed to connect to {TARGET_URL}: {e}")
+        jobs = []
+        for job in data.get("jobs", []):
+            jobs.append({
+                "title": job.get("title", "N/A"),
+                "company": "Google",
+                "location": job.get("locations", [{}])[0].get("display", "N/A"),
+                "description": "Tech, Engineering, and Business roles at Google India.",
+                "apply_link": job.get("applyUrl") or job.get("detailsUrl", "N/A")
+            })
+        print(f"✅ Google: Found {len(jobs)} jobs.")
+        return jobs
+    except Exception as e:
+        print("❌ Google fetch failed (This API may change often):", e)
         return []
 
-# --- 5. EXPORT AND FINALIZE ---
-if __name__ == "__main__":
-    real_job_data = run_scraper()
-    
-    # Save the data to a JSON file
-    with open('real_jobs.json', 'w', encoding='utf-8') as f:
-        json.dump(real_job_data, f, ensure_ascii=False, indent=4)
+# === LEVER (Zoho Example) ===
+def fetch_lever_jobs():
+    """Fetches jobs directly from the Lever API for Zoho, filtering for India."""
+    try:
+        url = "https://api.lever.co/v0/postings/zoho?mode=json"
+        r = requests.get(url, timeout=10)
+        r.raise_for_status()
+        data = r.json()
         
-    print("\nData saved to real_jobs.json. Ready for copy-paste.")
+        jobs = []
+        for job in data:
+            location = job.get("categories", {}).get("location", "")
+            # Filter specifically for jobs mentioning 'India'
+            if "India" in location or "Remote" in location: 
+                jobs.append({
+                    "title": job.get("text", "N/A"),
+                    "company": "Zoho (via Lever)",
+                    "location": location,
+                    "description": "Various technical and non-technical roles. Filtered for India.",
+                    "apply_link": job.get("hostedUrl", "N/A")
+                })
+        print(f"✅ Zoho (Lever): Found {len(jobs)} jobs.")
+        return jobs
+    except Exception as e:
+        print("❌ Lever fetch failed:", e)
+        return []
+
+# === GREENHOUSE (Stripe Example) ===
+def fetch_greenhouse_jobs():
+    """Fetches jobs directly from the Greenhouse API for Stripe, filtering for India."""
+    try:
+        url = "https://boards-api.greenhouse.io/v1/boards/stripe/jobs"
+        r = requests.get(url, timeout=10)
+        r.raise_for_status()
+        data = r.json()
+        
+        jobs = []
+        for job in data.get("jobs", []):
+            location = job.get("location", {}).get("name", "")
+            if "India" in location or "Remote" in location:
+                jobs.append({
+                    "title": job.get("title", "N/A"),
+                    "company": "Stripe (via Greenhouse)",
+                    "location": location,
+                    "description": "Fintech and software roles for Stripe.",
+                    "apply_link": job.get("absolute_url", "N/A")
+                })
+        print(f"✅ Stripe (Greenhouse): Found {len(jobs)} jobs.")
+        return jobs
+    except Exception as e:
+        print("❌ Greenhouse fetch failed:", e)
+        return []
+
+# === WORKDAY (Accenture Example) - NOTE: Workday APIs are complex and often protected, but we try a public-facing URL ===
+# This endpoint often requires complex session cookies and headers that simple 'requests' cannot provide, but we try the simplest GET.
+def fetch_workday_jobs():
+    """Fetches jobs from a public-facing Workday endpoint for Accenture (requires inspection)."""
+    try:
+        # NOTE: This endpoint often fails as it needs complex POST headers/session tokens. 
+        # A simple GET request often only returns the JSON job list metadata, not the full job data.
+        url = "https://accenture.wd3.myworkdayjobs.com/wday/cxs/accenture/Accenture_Careers/jobs"
+        headers = {"Accept": "application/json"}
+        r = requests.get(url, headers=headers, timeout=10)
+        r.raise_for_status()
+        data = r.json()
+        
+        jobs = []
+        for job in data.get("jobPostings", []):
+            location = job.get("locationsText", "")
+            if "India" in location or "Remote" in location:
+                # Construct the full application link from the external path
+                apply_link = "https://accenture.wd3.myworkdayjobs.com/en-US/Accenture_Careers/job/" + job.get("externalPath", "")
+                
+                jobs.append({
+                    "title": job.get("title", "N/A"),
+                    "company": "Accenture (via Workday)",
+                    "location": location,
+                    "description": "Consulting and Technology roles in India.",
+                    "apply_link": apply_link
+                })
+        print(f"✅ Accenture (Workday): Found {len(jobs)} jobs.")
+        return jobs
+    except Exception as e:
+        print("❌ Workday fetch failed (Workday requires complex POST request):", e)
+        return []
+
+
+# --- 2. MAIN EXECUTION AND FORMATTING ---
+
+def run_api_scraper():
+    """Runs all fetch functions and formats the combined data for the index.html file."""
+    ALL_JOBS = []
+    
+    # Collect data from all sources
+    ALL_JOBS.extend(fetch_google_jobs())
+    ALL_JOBS.extend(fetch_lever_jobs())
+    ALL_JOBS.extend(fetch_greenhouse_jobs())
+    ALL_JOBS.extend(fetch_workday_jobs())
+
+    # Format into the final structure needed by index.html
+    final_jobs_list = []
+    today_date = datetime.now().strftime("%Y-%m-%d")
+    
+    for i, job in enumerate(ALL_JOBS):
+        # Assign required fields for the index.html card structure
+        final_jobs_list.append({
+            "id": i + 1,
+            "title": job.get("title", "Unknown Role"),
+            "company": job.get("company", "External Source"),
+            "location": job.get("location", "India"),
+            "description": job.get("description", "Click the link to view full details and apply."),
+            "link": job.get("apply_link", "#"),
+            "postedDate": today_date # Crucial for the 30-day filter
+        })
+        
+    return final_jobs_list
+
+# === SAVE TO JSON ===
+if __name__ == "__main__":
+    real_job_data = run_api_scraper()
+
+    # Save the data to a JSON file
+    with open("real_jobs.json", "w", encoding="utf-8") as f:
+        json.dump(real_job_data, f, indent=2, ensure_ascii=False)
+        
+    print(f"\n✅ COLLECTED {len(real_job_data)} JOBS ACROSS ALL SOURCES.")
+    print("Data saved to real_jobs.json. Ready for copy-paste.")
     
     # Print the JSON content to the console for easy copy-paste
     print("\n\n--- COPY THIS SECTION INTO index.html ---")
-    print(json.dumps(real_job_data, ensure_ascii=False, indent=4))
+    
+    # Format the list of jobs for direct insertion into the JavaScript array
+    jobs_js_format = ",\n".join([json.dumps(job, indent=4, ensure_ascii=False) for job in real_job_data])
+    
+    print("[\n" + jobs_js_format + "\n]")
     print("----------------------------------------\n")

@@ -1,1 +1,947 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "Associate Product Manager, University Graduate, 2026 Start",
+    "company": "Google",
+    "location": "Bengaluru, Karnataka, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 2,
+    "title": "Software Engineer III, Google Cloud",
+    "company": "Google",
+    "location": "Bengaluru, Karnataka, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 3,
+    "title": "Senior Service Strategy Activation Lead",
+    "company": "Google",
+    "location": "Gurugram, Haryana, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 4,
+    "title": "Customer Engineer, Marketing Technology, Google Cloud",
+    "company": "Google",
+    "location": "Gurugram, Haryana, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 5,
+    "title": "Investigations Specialist",
+    "company": "Google",
+    "location": "Bengaluru, Karnataka, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 6,
+    "title": "Data Scientist Product, Analytics, Insights and Measurement",
+    "company": "Google",
+    "location": "Bengaluru, Karnataka, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 7,
+    "title": "Engineering Director, AI, HR Engineering",
+    "company": "Google",
+    "location": "Hyderabad, Telangana, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 8,
+    "title": "Software Engineer III, Front End, Google Cloud",
+    "company": "Google",
+    "location": "Bengaluru, Karnataka, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 9,
+    "title": "Staff Software Engineer, YouTube Channel Memberships",
+    "company": "Google",
+    "location": "Bengaluru, Karnataka, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 10,
+    "title": "Performance Lead, AI Agent",
+    "company": "Google",
+    "location": "Bengaluru, Karnataka, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 11,
+    "title": "Senior Staff Software Engineer, Google Cloud",
+    "company": "Google",
+    "location": "Bengaluru, Karnataka, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 12,
+    "title": "Application Engineering Manager, ServiceNow Platform",
+    "company": "Google",
+    "location": "Hyderabad, Telangana, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 13,
+    "title": "Staff Data Scientist, Ads Insights and Measurement",
+    "company": "Google",
+    "location": "Bengaluru, Karnataka, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 14,
+    "title": "Senior Software Engineer, Cryptography, Core",
+    "company": "Google",
+    "location": "Hyderabad, Telangana, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 15,
+    "title": "Business Systems Analyst, Supply Chain Systems",
+    "company": "Google",
+    "location": "Bengaluru, Karnataka, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 16,
+    "title": "Staff Software Engineer, Technical Infrastructure",
+    "company": "Google",
+    "location": "Hyderabad, Telangana, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 17,
+    "title": "Security Engineer, Android Malware",
+    "company": "Google",
+    "location": "Bengaluru, Karnataka, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 18,
+    "title": "UX Researcher III, Google Pay",
+    "company": "Google",
+    "location": "Bengaluru, Karnataka, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 19,
+    "title": "Digital Marketing Strategist",
+    "company": "Google",
+    "location": "Hyderabad, Telangana, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 20,
+    "title": "Program Manager, Global Business Applied AI, SPARK",
+    "company": "Google",
+    "location": "Hyderabad, Telangana, India",
+    "description": "Tech, Engineering, and Business roles at Google India.",
+    "link": "N/A",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 21,
+    "title": "Account Executive, Billing ",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7141701",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 22,
+    "title": "Account Executive, Product Sales, Adaptive Pricing (NYC)",
+    "company": "Stripe (via Greenhouse)",
+    "location": "New York, NY; Remote (ET & CT)",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7225447",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 23,
+    "title": "Account Executive, Product Sales, Link",
+    "company": "Stripe (via Greenhouse)",
+    "location": "SF, Seattle, NYC, Chicago, US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7155893",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 24,
+    "title": "AMER Analytical Lead",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US Chicago, US Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7245456",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 25,
+    "title": "AMER Analytical Lead ",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US, CHI, US Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7053829",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 26,
+    "title": "Americas Field Marketing, Startups",
+    "company": "Stripe (via Greenhouse)",
+    "location": "NY, SF, SEA, CHI, ATL, Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7246233",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 27,
+    "title": "Android Engineer, OS Platform",
+    "company": "Stripe (via Greenhouse)",
+    "location": "San Francisco, Remote in US, Remote in Canada",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7243475",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 28,
+    "title": "Android Engineer, Terminal Commerce Experience",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Toronto, Remote in Canada",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7243948",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 29,
+    "title": "Backend Engineer, Core Tech, Canada",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Toronto, CAN-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6567253",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 30,
+    "title": "Backend Engineer, Core Technology",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Seattle, San Francisco, US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6042172",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 31,
+    "title": "Backend Engineer, Revenue and Financial Automation",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Toronto, CAN-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7217048",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 32,
+    "title": "Benefits Specialist",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US-Remote, Chicago, Atlanta",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7190448",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 33,
+    "title": "Chief of Staff, Global Partnerships ",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Remote US",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7141980",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 34,
+    "title": "Consumer Lifecycle Marketing Manager",
+    "company": "Stripe (via Greenhouse)",
+    "location": "San Francisco, CA, USA; New York, NY, USA; Seattle, WA, USA; Chicago, IL, USA; Atlanta, GA, USA; Toronto, ON, Canada; Remote (Various Locations)",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6960632",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 35,
+    "title": "Credit Operations Analyst, Commercial Credit",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Remote, US",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7025026",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 36,
+    "title": "Credit Risk Strategy Analyst, Portfolio and Policy Management",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Toronto, Remote in Canada",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7095463",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 37,
+    "title": "Data Analyst, GTM Analytics",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Toronto, US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7264869",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 38,
+    "title": "Data Governance Lead",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Remote US",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=5922987",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 39,
+    "title": "Design Engineer, Presence",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US Remote, Canada",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7144975",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 40,
+    "title": "Developer Experience Engineer, Privy",
+    "company": "Stripe (via Greenhouse)",
+    "location": "NYC-Privy, US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7104344",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 41,
+    "title": "Engineering Manager, Product and Business",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US-Remote, Chicago, Seattle, San Francisco",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6909015",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 42,
+    "title": "Engineering Manager, Stripe Data Pipeline",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Bengaluru, India",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7261863",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 43,
+    "title": "Engineering Manager, Web Presence Platform (WPP)",
+    "company": "Stripe (via Greenhouse)",
+    "location": "CA-Toronto, CA-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6756744",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 44,
+    "title": "Fraud Analyst",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7245790",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 45,
+    "title": "Growth Marketing Manager, Lifecycle",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6885723",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 46,
+    "title": "GTM Data Operations Lead",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Chicago, US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7090913",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 47,
+    "title": "Head of Compensation Programs",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7203545",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 48,
+    "title": "Head of Consumer Marketing, Link",
+    "company": "Stripe (via Greenhouse)",
+    "location": "NYC, Seattle, SF, Chicago, Remote-US/CA",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7165781",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 49,
+    "title": "Head of Enterprise Sales, Existing Business -  AMER ",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Chicago, US-Remote ",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7166735",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 50,
+    "title": "Head of Field Marketing, EMEA",
+    "company": "Stripe (via Greenhouse)",
+    "location": "London, Dublin, Remote UK",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6865156",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 51,
+    "title": "Head of Global Equity Administration",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7200918",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 52,
+    "title": "Head of Holistic Risk Oversight",
+    "company": "Stripe (via Greenhouse)",
+    "location": "London, Remote UK",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7194364",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 53,
+    "title": "Manager, Risk Ops Tech Enablement Programs",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7169392",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 54,
+    "title": "Portfolio Oversight & Analytics Manager, Stripe Capital",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Toronto, Remote in Canada, Remote US",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7158188",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 55,
+    "title": "Pricing Analyst - Deal Pricing Tooling & Analytics ",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US, CHI, US ATL, US Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7138537",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 56,
+    "title": "Product Counsel, Crypto",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US-NYC, US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7237681",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 57,
+    "title": "Product Counsel, Link",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US-Remote, US-Chicago, US-Atlanta",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7061852",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 58,
+    "title": "Product Designer, Dashboard",
+    "company": "Stripe (via Greenhouse)",
+    "location": "SF, Seattle, New York, Remote in the US",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6895159",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 59,
+    "title": "Product Manager, Card Costs and Settlement",
+    "company": "Stripe (via Greenhouse)",
+    "location": "SF, NY, SEA, US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7176532",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 60,
+    "title": "Product Manager, Fraud Signals and Assessments",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Chicago / Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6360888",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 61,
+    "title": "Product Manager, Link Balance",
+    "company": "Stripe (via Greenhouse)",
+    "location": "NY, SF, SEA, Canada, Remote-US",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7118153",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 62,
+    "title": "Product Manager, Onboarding",
+    "company": "Stripe (via Greenhouse)",
+    "location": "San Francisco, Seattle, New York, Chicago, US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6992777",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 63,
+    "title": "Product Manager, Payment Records Platform",
+    "company": "Stripe (via Greenhouse)",
+    "location": "SF, NY, SEA, Remote-US",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7176530",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 64,
+    "title": "Product Manager, Seller Systems",
+    "company": "Stripe (via Greenhouse)",
+    "location": "SF, SEA, NYC, US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6964987",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 65,
+    "title": "Product Manager, Treasury Financial Accounts",
+    "company": "Stripe (via Greenhouse)",
+    "location": "SF, NY, SEA, Remote-US",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7104416",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 66,
+    "title": "Product Marketing Manager",
+    "company": "Stripe (via Greenhouse)",
+    "location": "San Francisco, New York, Seattle, Chicago, Remote, Toronto",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6348471",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 67,
+    "title": "Product Marketing Manager, Corporate Marketing",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Remote US, Canada",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7165194",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 68,
+    "title": "Product Marketing Manager, Industries",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Remote US / Canada",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7079621",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 69,
+    "title": "Product Marketing Manager, Market Intelligence",
+    "company": "Stripe (via Greenhouse)",
+    "location": "New York, San Francisco, Chicago, Remote, Toronto",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6648836",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 70,
+    "title": "Product Marketing Manager, SaaS Platforms ",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Remote, New York, San Francisco, Seattle, Chicago",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7242399",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 71,
+    "title": "Product Marketing Manager, stripe.com",
+    "company": "Stripe (via Greenhouse)",
+    "location": "San Francisco, Toronto, NYC, Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6969516",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 72,
+    "title": "Product Marketing Manager, TAM & Strategy",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Chicago, Remote-US/CA",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7211174",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 73,
+    "title": "Program Manager, Business Practices",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7206339",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 74,
+    "title": "Program Manager, Commercial Solutions",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US, Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6992894",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 75,
+    "title": "Program Manager, Global Partner Engineering & Operations (PE&O) - Operational Excellence",
+    "company": "Stripe (via Greenhouse)",
+    "location": "San Francisco, Seattle, New York (Office) or Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7081435",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 76,
+    "title": "Program Manager, Risk Ops Enablement",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7214197",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 77,
+    "title": "Program Manager, Risk Ops Enablement",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7229462",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 78,
+    "title": "Program Manager, User Onboarding & Compliance",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Chicago, US-Remote, Canada",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7214531",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 79,
+    "title": "Regulatory Affairs Licensing Specialist, NORAM",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US-SF, US-NYC, US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7254474",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 80,
+    "title": "Revenue Analytics Manager",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Toronto, Canada-Remote, US-Remote (must be based outside of greater SEA, NYC, SF metro areas)",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7102805",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 81,
+    "title": "Risk Operations Analyst",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Remote, United States ",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=5950076",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 82,
+    "title": "Risk Partnerships Manager - Banks & Treasury",
+    "company": "Stripe (via Greenhouse)",
+    "location": "US Remote or Toronto, CA",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7028809",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 83,
+    "title": "Risk Partnerships Manager, Issuing & Capital",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Chicago or Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7030272",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 84,
+    "title": "Security Engineer, Security Partnerships",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Remote, North America",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6892149",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 85,
+    "title": " Security Investigations Analyst",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Remote, North America",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7137787",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 86,
+    "title": "Senior Staff Engineer, Core Infrastructure",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Seattle, US Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7017350",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 87,
+    "title": "SEO Marketing Manager, Stripe Docs",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Bengaluru, India",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7142155",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 88,
+    "title": "Software Engineer, Operations Platform",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Bengaluru, India",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7108247",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 89,
+    "title": "Solutions Architect, Enterprise ",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Chicago, IL or Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7099421",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 90,
+    "title": "Staff Frontend Engineer, Privy",
+    "company": "Stripe (via Greenhouse)",
+    "location": "NYC-Privy, US-Remote ",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7091959",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 91,
+    "title": "Staff Product Designer, Checkout",
+    "company": "Stripe (via Greenhouse)",
+    "location": "SF, Seattle, New York, Remote in the US",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7202630",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 92,
+    "title": "Staff Product Designer, Dashboard",
+    "company": "Stripe (via Greenhouse)",
+    "location": "SF, Seattle, New York, Remote in the US",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6894953",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 93,
+    "title": "Staff Security Engineer, Privy",
+    "company": "Stripe (via Greenhouse)",
+    "location": "NYC-Privy, US-Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7104148",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 94,
+    "title": "Staff Software Engineer, Data",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Toronto, Canada, Canada Remote ",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6482105",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 95,
+    "title": "Staff Software Engineer, Data Movement",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Seattle, US Remote, NYC ",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6345510",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 96,
+    "title": "Strategic Pursuits Specialist",
+    "company": "Stripe (via Greenhouse)",
+    "location": "SF, Chicago, NYC, US Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6683108",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 97,
+    "title": "Strategy and Operations Lead, Self Serve ",
+    "company": "Stripe (via Greenhouse)",
+    "location": "NY, CHI, SF, Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7134912",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 98,
+    "title": "Strategy & Operations Business Partner, Sales Development",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Chicago, Atlanta, Remote-US",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6836544",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 99,
+    "title": "Strategy & Operations, Card Networks ",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Remote US",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7139182",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 100,
+    "title": "Technical Account Management, Strategist",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Bangalore, India",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6999186",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 101,
+    "title": "Technical Account Manager",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Chicago, New York, San Francisco, Seattle, or US Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6458492",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 102,
+    "title": "Technical Program Manager, Manager, Infrastructure",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Seattle, San Francisco, Remote",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=6815996",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 103,
+    "title": "Technical Program Manager, Risk",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Chicago, Atlanta, Remote in the US",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7258983",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 104,
+    "title": "Technical Program Manager, Security",
+    "company": "Stripe (via Greenhouse)",
+    "location": "SF, Seattle, Remote in the US",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7264927",
+    "postedDate": "2025-09-29"
+  },
+  {
+    "id": 105,
+    "title": "Technical Sales Enablement Business Partner",
+    "company": "Stripe (via Greenhouse)",
+    "location": "Chicago, Remote US",
+    "description": "Fintech and software roles for Stripe.",
+    "link": "https://stripe.com/jobs/search?gh_jid=7089994",
+    "postedDate": "2025-09-29"
+  }
+]
