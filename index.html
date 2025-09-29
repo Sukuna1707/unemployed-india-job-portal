@@ -1,106 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Job Board 📒</title>
-  <style>
-    body {
-      font-family: "Comic Sans MS", cursive, sans-serif;
-      background: #fffbea;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    header {
-      background: #222;
-      color: #fff;
-      padding: 20px;
-      font-size: 24px;
-    }
-    #job-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 20px;
-    }
-    .job-card {
-      background: #ffffff;
-      border: 2px solid #000;
-      border-radius: 10px;
-      padding: 15px;
-      margin: 10px;
-      width: 280px;
-      text-align: left;
-      box-shadow: 4px 4px 0px #000;
-      transition: transform 0.2s;
-    }
-    .job-card:hover {
-      transform: scale(1.05);
-    }
-    .job-card h3 {
-      margin: 0;
-      font-size: 18px;
-    }
-    .job-card p {
-      margin: 5px 0;
-      font-size: 14px;
-    }
-    .apply-btn {
-      display: inline-block;
-      background: #ffcc00;
-      color: #000;
-      padding: 8px 12px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 2px 2px 0px #000;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karriere India | The Opportunity Journal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font stack to maintain the playful, diary feel */
+        @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+        body {
+            font-family: 'Patrick Hand', "Comic Sans MS", cursive; 
+            background: #fdfdfd;
+            /* Simple notebook lines effect */
+            background-image: linear-gradient(to bottom, transparent 97%, #ddd 97%);
+            background-size: 100% 2.5rem; 
+            min-height: 100vh;
+        }
+        h1, h2 {
+            font-family: 'Patrick Hand', cursive;
+        }
+        .job-card {
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 8px;
+            box-shadow: 4px 4px 0 #000;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+        .job-card:hover {
+            transform: translateY(-2px) translateX(-2px);
+            box-shadow: 6px 6px 0 #F87171; /* Soft red/pink shadow on hover */
+        }
+        .job-button {
+            background-color: #000;
+            color: #fff;
+            transition: background-color 0.1s;
+            border-radius: 6px;
+        }
+        .job-button:hover {
+            background-color: #F87171; /* Match hover shadow color */
+        }
+        header {
+            border-bottom: 3px dashed #000; /* Dashed line for notebook feel */
+        }
+        .search-input {
+            border: 2px solid #000;
+            border-radius: 8px;
+            box-shadow: 2px 2px 0 #000;
+        }
+    </style>
 </head>
-<body>
-  <header>📒 Student Job Board (India Only)</header>
-  <p>Freshers & Internships → Only India 🇮🇳</p>
-  <div id="job-list">Loading jobs...</div>
+<body class="text-gray-900">
 
-  <script>
-    const jobList = document.getElementById("job-list");
+    <!-- Header -->
+    <header class="text-center py-8 bg-white/70 backdrop-blur-sm sticky top-0 z-10">
+        <h1 class="text-4xl font-bold">🗒️ Karriere India | The Opportunity Journal</h1>
+        <p class="text-xl mt-2">A clear path to your next role. No distractions, just honest listings.</p>
+    </header>
 
-    async function fetchJobs() {
-      try {
-        const response = await fetch("https://jsearch.p.rapidapi.com/search?query=student%20jobs%20in%20India%20AND%20freshers&page=1&num_pages=1&date_posted=last_week", {
-          method: "GET",
-          headers: {
-            "x-rapidapi-key": "390d988e45mshb8385777edf06aap13be9cjsn6c73c9f4995c",
-            "x-rapidapi-host": "jsearch.p.rapidapi.com"
-          }
+    <!-- Jobs Section -->
+    <main class="container mx-auto px-4 py-10">
+        <h2 class="text-3xl font-bold mb-8 text-center">Latest Opportunities</h2>
+
+        <!-- Search Bar -->
+        <div class="flex justify-center mb-10">
+            <input type="text" id="searchInput" placeholder="Scribble down your desired job, company, or location..."
+                   class="search-input w-full max-w-xl px-6 py-3 focus:outline-none focus:ring-0">
+        </div>
+
+        <!-- Job Listings - Dynamically rendered here -->
+        <div id="job-listings" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Job cards will be rendered here by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 border-t-2 border-black mt-10">
+        <p>✏️ Curated for Growth · © 2025 Karriere India</p>
+    </footer>
+
+    <script>
+        // === CORE JOB DATA: REAL LISTINGS ===
+        // NOTE: ADDED 'postedDate' FIELD. Format is YYYY-MM-DD.
+        const jobs = [
+            {
+                id: 1,
+                title: "Associate Engineer - Data/DevOps",
+                company: "United Airlines Inc.",
+                location: "Gurugram, Haryana, India",
+                description: "Driving data-driven insights for commercial/operational projects. Requires 2+ years experience in Java/Python, Big Data (PySpark, Kafka, Airflow), and RDBMS/Data Warehouse.",
+                link: "https://careers.united.com/us/en/job/GGN00002195/Data-Engineer",
+                postedDate: "2025-09-28"
+            },
+            {
+                id: 2,
+                title: "Staff Software Engineer (Lead UI Developer)",
+                company: "GE Vernova",
+                location: "Hyderabad, Telangana, India",
+                description: "Innovative Lead UI Developer responsible for programming components, features, and feature sets. Works independently, leads design discussions, and guides the team on component design.",
+                link: "https://careers.gevernova.com/global/en/job/GVXGVWGLOBALR5003932EXTERNALENGLOBAL/Staff-Software-Engineer",
+                postedDate: "2025-09-28"
+            },
+            {
+                id: 3,
+                title: "Principal Cloud Ops Engineer (Off Campus Drive)",
+                company: "Hexagon",
+                location: "Hyderabad / Hybrid",
+                description: "Off Campus Drive for fresh talent. Focus on Cloud Operations and engineering best practices. Experience requirement is 0 – 1 Years.",
+                link: "https://careers.hexagon.com/job/Principal-Cloud-Ops-Engineer/1700-en_US/",
+                postedDate: "2025-09-28"
+            },
+            {
+                id: 4,
+                title: "L&T Careers 2025 | Software Engineer",
+                company: "L&T",
+                location: "Mumbai",
+                description: "Exciting opportunity for fresh graduates with 0-2 years experience. Join L&T to contribute to large-scale software projects.",
+                link: "https://larsentoubrocareers.peoplestrong.com/job/detail/LNT_SE-LS_1347522",
+                postedDate: "2025-09-28"
+            },
+            {
+                id: 5,
+                title: "Junior Engineer",
+                company: "Cornerstone",
+                location: "Pune",
+                description: "Entry-level position open for freshers. Opportunity to start a career in technology and engineering with a focus on foundational IT skills.",
+                link: "https://cornerstone.csod.com/ux/ats/careersite/2/home/requisition/10644?c=cornerstone",
+                postedDate: "2025-09-28"
+            },
+            {
+                id: 6,
+                title: "AI Research Engineer",
+                company: "AlphaSense",
+                location: "Bengaluru",
+                description: "Seeking experienced engineers (1-5 years) for research and development in Artificial Intelligence and Machine Learning. Focus on building core AI systems.",
+                link: "https://job-boards.greenhouse.io/alphasense/jobs/7939179002",
+                postedDate: "2025-09-28"
+            },
+            {
+                id: 7,
+                title: "Software Engineer (.Net, Angular)",
+                company: "Numerator",
+                location: "REMOTE - India",
+                description: "Seeking 4+ years experience with Angular 2+ and .NET technologies for a remote position. Contribute to core platform development in a fast-paced environment.",
+                link: "https://www.numerator.com/join-our-team/",
+                postedDate: "2025-09-28"
+            }
+        ];
+
+        const jobListingsContainer = document.getElementById('job-listings');
+        const searchInput = document.getElementById('searchInput');
+
+        // --- NEW: EXPIRATION LOGIC ---
+        const EXPIRATION_DAYS = 30;
+        const MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+        /**
+         * Checks if a job listing has expired based on a 30-day limit.
+         * @param {string} dateString - The job's postedDate string (YYYY-MM-DD).
+         * @returns {boolean} True if the job is expired, false otherwise.
+         */
+        function isJobExpired(dateString) {
+            const posted = new Date(dateString);
+            const now = new Date();
+            // Calculate the difference in days
+            const timeDifference = now.getTime() - posted.getTime();
+            const dayDifference = timeDifference / MS_PER_DAY;
+            
+            return dayDifference > EXPIRATION_DAYS;
+        }
+        // --- END EXPIRATION LOGIC ---
+
+
+        // Function to render job cards dynamically
+        function renderJobs(inputJobs) {
+            jobListingsContainer.innerHTML = '';
+            
+            // 1. Filter out expired jobs FIRST
+            const currentJobs = inputJobs.filter(job => !isJobExpired(job.postedDate));
+
+            // 2. Apply search filter to the current jobs
+            const searchTerm = searchInput.value.toLowerCase();
+            const filteredJobs = currentJobs.filter(job =>
+                job.title.toLowerCase().includes(searchTerm) ||
+                job.company.toLowerCase().includes(searchTerm) ||
+                job.location.toLowerCase().includes(searchTerm) ||
+                job.description.toLowerCase().includes(searchTerm)
+            );
+
+            if (filteredJobs.length === 0) {
+                jobListingsContainer.innerHTML = '<p class="text-center col-span-full text-xl text-gray-500 mt-10">🤷‍♂️ Oops! Nothing matched your scribble. Try searching for a wider range of keywords!</p>';
+                return;
+            }
+            
+            filteredJobs.forEach(job => {
+                const jobCard = document.createElement('div');
+                jobCard.className = 'job-card p-6 space-y-3';
+
+                // Ensure the description is not too long
+                const descriptionSnippet = job.description.length > 100 ? job.description.substring(0, 100) + '...' : job.description;
+
+                // Simple display of when the job was posted
+                const postedDateDisplay = new Date(job.postedDate).toLocaleDateString('en-IN', { month: 'short', day: 'numeric' });
+
+
+                jobCard.innerHTML = `
+                    <h3 class="text-2xl font-bold">${job.title}</h3>
+                    <p class="text-lg mt-1">${job.company}</p>
+                    <p class="text-sm mt-1 flex items-center justify-between">
+                        <span class="flex items-center"><span class="mr-2">📍</span> ${job.location}</span>
+                        <span class="text-xs font-bold bg-gray-200 px-2 py-1 rounded-full border border-gray-300">📅 Posted: ${postedDateDisplay}</span>
+                    </p>
+                    <p class="text-gray-600 text-base mt-2">${descriptionSnippet}</p>
+                    <a href="${job.link}" target="_blank" class="job-button inline-block px-4 py-2 mt-4 font-semibold text-center">
+                        Jump to Application →
+                    </a>
+                `;
+                jobListingsContainer.appendChild(jobCard);
+            });
+        }
+
+        // Search functionality listener
+        searchInput.addEventListener('input', () => {
+            // Rerun the full rendering logic (which applies both filters)
+            renderJobs(jobs); 
         });
 
-        const data = await response.json();
-        jobList.innerHTML = "";
+        // Initial render of all jobs when the page loads
+        renderJobs(jobs);
 
-        if (data.data && data.data.length > 0) {
-          data.data.forEach(job => {
-            const card = document.createElement("div");
-            card.className = "job-card";
-            card.innerHTML = `
-              <h3>${job.job_title}</h3>
-              <p><b>Company:</b> ${job.employer_name || "Not Mentioned"}</p>
-              <p><b>Location:</b> ${job.job_city || "Anywhere"}, India</p>
-              <a href="${job.job_apply_link}" target="_blank" class="apply-btn">Apply</a>
-            `;
-            jobList.appendChild(card);
-          });
-        } else {
-          jobList.innerHTML = "<p>No recent fresher jobs in India found 😔</p>";
-        }
-      } catch (err) {
-        jobList.innerHTML = "<p>⚠️ Error fetching jobs. Try again later.</p>";
-        console.error(err);
-      }
-    }
-
-    fetchJobs();
-  </script>
+    </script>
 </body>
 </html>
