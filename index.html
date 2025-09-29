@@ -3,151 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Karriere India | Student Job Journal</title>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Student Job Board 📒</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
     body {
-      font-family: 'Patrick Hand', "Comic Sans MS", cursive;
-      background: #fdfdfd;
-      background-image: linear-gradient(to bottom, transparent 97%, #ddd 97%);
-      background-size: 100% 2.5rem;
-      min-height: 100vh;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      background: #fffbea;
+      margin: 0;
+      padding: 0;
+      text-align: center;
     }
     header {
-      border-bottom: 3px dashed #000;
+      background: #222;
+      color: #fff;
+      padding: 20px;
+      font-size: 24px;
+    }
+    #job-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px;
     }
     .job-card {
-      background: #fff;
+      background: #ffffff;
       border: 2px solid #000;
-      border-radius: 8px;
-      box-shadow: 4px 4px 0 #000;
-      padding: 1rem;
-      transition: 0.2s;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px;
+      width: 280px;
+      text-align: left;
+      box-shadow: 4px 4px 0px #000;
+      transition: transform 0.2s;
     }
     .job-card:hover {
-      transform: translateY(-3px) translateX(-3px);
-      box-shadow: 6px 6px 0 #f87171;
+      transform: scale(1.05);
     }
-    .search-input {
-      border: 2px solid #000;
-      border-radius: 8px;
-      box-shadow: 2px 2px 0 #000;
-      padding: 0.75rem 1rem;
-      width: 100%;
-      max-width: 600px;
+    .job-card h3 {
+      margin: 0;
+      font-size: 18px;
     }
-    .job-button {
-      background-color: #000;
-      color: #fff;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
+    .job-card p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+    .apply-btn {
       display: inline-block;
-      margin-top: 0.5rem;
+      background: #ffcc00;
+      color: #000;
+      padding: 8px 12px;
+      border-radius: 6px;
+      text-decoration: none;
       font-weight: bold;
-    }
-    .job-button:hover {
-      background-color: #f87171;
+      box-shadow: 2px 2px 0px #000;
     }
   </style>
 </head>
-<body class="text-gray-900">
+<body>
+  <header>📒 Student Job Board (India Only)</header>
+  <p>Freshers & Internships → Only India 🇮🇳</p>
+  <div id="job-list">Loading jobs...</div>
 
-  <!-- Header -->
-  <header class="text-center py-6 bg-white/70 sticky top-0 z-10">
-    <h1 class="text-4xl font-bold">🗒️ Karriere India | Student Job Journal</h1>
-    <p class="text-lg mt-2">Simple, clean, and just for students & freshers 🚀</p>
-  </header>
-
-  <!-- Main -->
-  <main class="container mx-auto px-4 py-10">
-    <h2 class="text-3xl font-bold mb-8 text-center">📌 Latest Opportunities</h2>
-
-    <!-- Search Bar -->
-    <div class="flex justify-center mb-10">
-      <input type="text" id="searchInput" class="search-input" 
-             placeholder="Search jobs like 'developer', 'intern', 'graduate'...">
-    </div>
-
-    <!-- Job Listings -->
-    <div id="job-listings" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3"></div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="text-center py-6 border-t-2 border-black mt-10">
-    <p>✏️ Made with care · © 2025 Karriere India</p>
-  </footer>
-
-  <!-- Script -->
   <script>
-    const API_KEY = "390d988e45mshb8385777edf06aap13be9cjsn6c73c9f4995c";
-    const jobListings = document.getElementById("job-listings");
-    const searchInput = document.getElementById("searchInput");
+    const jobList = document.getElementById("job-list");
 
-    // Fetch jobs
-    async function fetchJobs(query = "fresher graduate india") {
-      const url = `https://jsearch.p.rapidapi.com/search?query=${encodeURIComponent(query)}&page=1&num_pages=1`;
-      const options = {
-        method: "GET",
-        headers: {
-          "X-RapidAPI-Key": API_KEY,
-          "X-RapidAPI-Host": "jsearch.p.rapidapi.com"
-        }
-      };
-
+    async function fetchJobs() {
       try {
-        const res = await fetch(url, options);
-        const data = await res.json();
-        return data.data || [];
+        const response = await fetch("https://jsearch.p.rapidapi.com/search?query=student%20jobs%20in%20India%20AND%20freshers&page=1&num_pages=1&date_posted=last_week", {
+          method: "GET",
+          headers: {
+            "x-rapidapi-key": "390d988e45mshb8385777edf06aap13be9cjsn6c73c9f4995c",
+            "x-rapidapi-host": "jsearch.p.rapidapi.com"
+          }
+        });
+
+        const data = await response.json();
+        jobList.innerHTML = "";
+
+        if (data.data && data.data.length > 0) {
+          data.data.forEach(job => {
+            const card = document.createElement("div");
+            card.className = "job-card";
+            card.innerHTML = `
+              <h3>${job.job_title}</h3>
+              <p><b>Company:</b> ${job.employer_name || "Not Mentioned"}</p>
+              <p><b>Location:</b> ${job.job_city || "Anywhere"}, India</p>
+              <a href="${job.job_apply_link}" target="_blank" class="apply-btn">Apply</a>
+            `;
+            jobList.appendChild(card);
+          });
+        } else {
+          jobList.innerHTML = "<p>No recent fresher jobs in India found 😔</p>";
+        }
       } catch (err) {
-        console.error("API Error:", err);
-        return [];
+        jobList.innerHTML = "<p>⚠️ Error fetching jobs. Try again later.</p>";
+        console.error(err);
       }
     }
 
-    // Render jobs
-    function renderJobs(jobs) {
-      jobListings.innerHTML = "";
-
-      // 🎯 Filter for student/fresher friendly jobs
-      const studentJobs = jobs.filter(job =>
-        /fresher|graduate|0-1|entry/i.test(job.job_title + " " + job.job_description)
-      );
-
-      if (!studentJobs.length) {
-        jobListings.innerHTML = `<p class="col-span-full text-center text-gray-500">🤷‍♂️ No student-friendly jobs found. Try another keyword!</p>`;
-        return;
-      }
-
-      studentJobs.forEach(job => {
-        const card = document.createElement("div");
-        card.className = "job-card";
-
-        card.innerHTML = `
-          <h2 class="text-xl font-bold">${job.job_title}</h2>
-          <p class="text-sm text-gray-700">${job.employer_name || "Unknown Company"}</p>
-          <p class="text-sm text-gray-500">📍 ${job.job_city || ""}, ${job.job_country || ""}</p>
-          <p class="mt-2 text-gray-600 text-sm">${(job.job_description || "").slice(0, 120)}...</p>
-          <a href="${job.job_apply_link}" target="_blank" class="job-button">Apply →</a>
-        `;
-        jobListings.appendChild(card);
-      });
-    }
-
-    // Search listener
-    searchInput.addEventListener("keyup", async (e) => {
-      const term = e.target.value.trim();
-      if (term.length < 2) return;
-      const jobs = await fetchJobs(term + " fresher graduate");
-      renderJobs(jobs);
-    });
-
-    // Load default jobs
-    (async () => {
-      const jobs = await fetchJobs("fresher graduate india");
-      renderJobs(jobs);
-    })();
+    fetchJobs();
   </script>
 </body>
 </html>
